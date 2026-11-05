@@ -1,26 +1,48 @@
-# Previsão de Doença Cardiovascular: CRISP-DM com Deployment no Amazon SageMaker
+# Cardiovascular Disease Risk Classification — CRISP-DM and Amazon SageMaker
 
-> Projeto completo nas 6 fases do CRISP-DM, terminado com um modelo XGBoost publicado num endpoint do SageMaker para inferência em tempo real e em lote.
+An end-to-end academic machine-learning project structured around the six phases of CRISP-DM, including model evaluation and deployment workflows using Amazon SageMaker.
 
-**Mestrado em Business Intelligence & Analytics (ISCAP)**, cadeira de Business Analytics: Ferramentas e Aplicações, 2025/26
+**Academic context:** MSc in Business Intelligence & Analytics, ISCAP (2025/26)  
+**Course:** Business Analytics — Tools and Applications  
+**Authors:** Giulia Jacobina, João Coelho, and Larissa Tostes
 
-## O problema
-Identificar pacientes com risco de doença cardiovascular a partir de variáveis fáceis de recolher, como idade, pressão arterial, colesterol e hábitos, para apoiar a triagem clínica.
+## Project objective
 
-## Fases CRISP-DM
-1. **Business Understanding**: problema, objetivos, questões de pesquisa e análise SWOT.
-2. **Data Understanding**: dicionário de dados e qualidade (valores em falta, duplicados, outliers clínicos).
-3. **Data Preparation**: regras de limpeza, feature engineering e codificação.
-4. **Modeling**: 4 modelos com normalização e divisão treino/teste.
-5. **Evaluation**: métricas, matrizes de confusão, curvas ROC/AUC e importância das variáveis.
-6. **Deployment**: XGBoost no **Amazon SageMaker**, com endpoint em tempo real e *Batch Transform*.
+The project investigates whether routinely collected health-related variables can support a binary classification task for cardiovascular disease risk.
 
-## Resultados
-- AUC de cerca de **0,79** e accuracy de cerca de **73%**, com desempenhos parecidos entre os quatro modelos.
-- O modelo foi escolhido com prioridade ao **recall**, porque o erro mais grave é um falso negativo: classificar um doente como saudável.
+The dataset includes variables such as age, blood pressure, cholesterol, and lifestyle indicators. The objective is to demonstrate an analytics workflow, not to provide a clinical diagnostic tool.
 
-## Stack
-`pandas` · `scikit-learn` · `XGBoost` · `Amazon SageMaker` · `boto3` · `seaborn`
+## CRISP-DM workflow
 
-## Autores (Grupo 3)
-Giulia Jacobina · João Coelho · Larissa Tostes
+1. **Business understanding:** define the problem, objectives, research questions, and SWOT analysis.
+2. **Data understanding:** inspect the data dictionary, missing values, duplicates, and potential outliers.
+3. **Data preparation:** apply documented cleaning rules, feature engineering, and encoding.
+4. **Modelling:** train and compare four classification models using a train/test split and appropriate preprocessing.
+5. **Evaluation:** assess confusion matrices, ROC curves, AUC, accuracy, and feature importance.
+6. **Deployment:** package the selected XGBoost model for Amazon SageMaker real-time inference and batch processing.
+
+## Reported results
+
+The project reports approximately **0.79 ROC-AUC** and **73% accuracy** for the selected model. Recall was considered an important selection criterion because false negatives can be consequential in a screening-oriented scenario.
+
+These results are dataset- and split-specific and should not be interpreted as evidence of clinical validity.
+
+## Technology stack
+
+- Python, pandas, and scikit-learn
+- XGBoost
+- Amazon SageMaker and boto3
+- Seaborn for exploratory visualisation
+
+## Reproducing the project
+
+The complete workflow and implementation details are documented in the project notebooks and report. Reproduction of the deployment stage requires an AWS account, appropriate IAM permissions, and configuration of the SageMaker environment.
+
+Do not commit AWS access keys, secret keys, tokens, or other credentials to the repository. Use an approved local credentials profile or environment-based configuration.
+
+## Scope and limitations
+
+- This is an academic classification and deployment exercise, not a validated medical device.
+- Dataset performance does not establish clinical usefulness, fairness, or generalisation to other populations.
+- Any real-world health application would require clinical validation, governance, privacy safeguards, and oversight by qualified professionals.
+- Cloud deployment may incur AWS charges; remove resources after testing.
